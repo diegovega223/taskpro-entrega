@@ -1,0 +1,23 @@
+version: "3"
+services:
+  taskpro:
+    image: ggmartinez/laravel:php-82
+    ports:
+      - 8000:8000
+    volumes:
+      - ./taskpro:/app
+  taskpro-client:
+    image: ggmartinez/laravel:php-82
+    ports:
+      - 8001:8000
+    volumes:
+      - ./taskpro-client:/app
+  mysql:
+    image: mysql:8
+    ports:
+      - 3308:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=taskpro
+    volumes:
+      - ./mysql:/var/lib/mysql
